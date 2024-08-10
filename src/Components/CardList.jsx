@@ -5,7 +5,14 @@ import { AddCartProduct, useProductCart } from "../context/ProductContext";
 
 const CardList = () => {
   const [products, setProducts] = useState([]);
-  const AddToCard = useProductCart()
+  const [quantity, setQuantity] = useState(0);
+  const AddToCard = useProductCart();
+
+  function handleDecrement() {
+    if (quantity === 0) return;
+    setQuantity((prev) => prev - 1);
+  }
+
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", {
       method: "GET",
@@ -19,7 +26,7 @@ const CardList = () => {
   return (
     <div className="p-4 bg-gray-100 gap-2">
       <h1 className="text-lg font-bold mb-2"> Products </h1>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
         {products.map((product) => (
           <div key={product.id} className="bg-white p-2 flex flex-col">
             <img className="w-full h-40" src={product.image} />
@@ -28,12 +35,12 @@ const CardList = () => {
               <span>${product.price}</span>
             </div>
             <div className="mx-auto p-2">
-              <button>
+              <button onClick={handleDecrement}>
                 {" "}
                 <FaMinus />{" "}
               </button>
-              <span>1 in cart </span>
-              <button>
+              <span> {quantity} in cart </span>
+              <button onClick={() => setQuantity((prev) => prev + 1)}>
                 {" "}
                 <FaPlus />{" "}
               </button>
