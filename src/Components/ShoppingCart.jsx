@@ -8,7 +8,7 @@ const ShoppingCart = ({ setIsOpen }) => {
     console.log("Cart Product is" + JSON.stringify(cartProducts));
 
   return ReactDom.createPortal(
-    <div className=" bg-white w-1/3 h-auto absolute top-0 right-0 z-50 border-4 border-gray-400">
+    <div className=" bg-white sm:w-screen sm:h-screen md:w-1/3 h-auto absolute top-0 right-0 z-50 border-4 border-gray-400">
       <div className="absolute right-2 top-2 font-bold p-2">
         {" "}
         <RxCross1 className="w-8 h-8" onClick={() => setIsOpen(false)} />{" "}
