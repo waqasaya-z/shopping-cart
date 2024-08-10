@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
-import { AddCartProduct, useProductCart } from "../context/ProductContext";
+import { useProductCart } from "../context/ProductContext";
 
 const CardList = () => {
   const [products, setProducts] = useState([]);
